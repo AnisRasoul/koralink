@@ -3,6 +3,7 @@ import { MapPin, Search, Filter, SlidersHorizontal, X } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import StadiumCard, { Stadium } from "../../components/StadiumCard";
+import StadiumMap from "../../components/StadiumMap";
 import {
   Select,
   SelectContent,
@@ -88,6 +89,7 @@ const FindStadiums = () => {
   const [selectedSize, setSelectedSize] = useState<string>("all");
   const [sortBy, setSortBy] = useState("distance");
   const [showFilters, setShowFilters] = useState(false);
+  const [selectedStadiumId, setSelectedStadiumId] = useState<string | null>(null);
 
   const filteredStadiums = mockStadiums
     .filter((stadium) => {
@@ -276,25 +278,19 @@ const FindStadiums = () => {
 
       {/* Map Placeholder */}
       <div className="card-stadium overflow-hidden">
-        <div className="relative h-64 md:h-80 bg-secondary flex items-center justify-center">
-          <div className="text-center">
-            <MapPin className="w-12 h-12 text-primary mx-auto mb-3" />
-            <p className="text-muted-foreground">Interactive map coming soon</p>
-            <p className="text-sm text-muted-foreground">Find stadiums near your location</p>
-          </div>
-          {/* Map pins preview */}
-          <div className="absolute inset-0 opacity-20 pointer-events-none">
-            {mockStadiums.slice(0, 4).map((stadium, i) => (
-              <div
-                key={stadium.id}
-                className="absolute w-4 h-4 bg-primary rounded-full animate-pulse"
-                style={{
-                  top: `${20 + i * 15}%`,
-                  left: `${25 + i * 12}%`,
-                }}
-              />
-            ))}
-          </div>
+        <div className="relative h-64 md:h-96 lg:h-[500px]">
+          <StadiumMap 
+            stadiums={filteredStadiums} 
+            selectedStadium={selectedStadiumId}
+            onStadiumSelect={(stadiumId) => {
+              setSelectedStadiumId(stadiumId);
+              // Scroll to the stadium card
+              const element = document.getElementById(`stadium-${stadiumId}`);
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              }
+            }}
+          />
         </div>
       </div>
 

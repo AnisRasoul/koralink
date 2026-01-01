@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Leaflet Map Styles */
+@import 'leaflet/dist/leaflet.css';
+
 /* KoraLink Design System - Football Stadium Booking Platform */
 /* Colors: Green, Black, White with game-inspired aesthetics */
 
@@ -247,6 +250,71 @@
     animation: card-flip 0.6s ease-out forwards;
   }
 
+  /* Scroll Animation Classes */
+  .scroll-fade-in {
+    opacity: 0;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .scroll-fade-in.is-visible {
+    opacity: 1;
+  }
+
+  .scroll-slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .scroll-slide-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scroll-slide-left {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .scroll-slide-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-slide-right {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .scroll-slide-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .scroll-scale.is-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .scroll-rotate {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .scroll-rotate.is-visible {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
@@ -294,4 +362,63 @@
   .delay-800 { animation-delay: 800ms; }
   .delay-900 { animation-delay: 900ms; }
   .delay-1000 { animation-delay: 1000ms; }
+}
+
+/* Leaflet Map Custom Styles */
+.leaflet-container {
+  font-family: 'Inter', sans-serif;
+}
+
+.leaflet-popup-content-wrapper {
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
+  border-radius: 0.75rem;
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 4px 20px -4px hsl(142 76% 36% / 0.2);
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  padding: 0;
+  min-width: 200px;
+}
+
+.leaflet-popup-tip {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+}
+
+.leaflet-popup-close-button {
+  color: hsl(var(--muted-foreground)) !important;
+  font-size: 20px !important;
+  padding: 4px 8px !important;
+}
+
+.leaflet-popup-close-button:hover {
+  color: hsl(var(--foreground)) !important;
+}
+
+.leaflet-control-zoom {
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: 0.5rem !important;
+  overflow: hidden;
+}
+
+.leaflet-control-zoom a {
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--foreground)) !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: hsl(var(--secondary)) !important;
+}
+
+.leaflet-control-zoom a:last-child {
+  border-bottom: none !important;
+}
+
+/* Smooth scroll offset for anchored elements */
+.scroll-mt-24 {
+  scroll-margin-top: 6rem;
 }

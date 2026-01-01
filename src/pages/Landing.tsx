@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import FeaturesSection from "../components/FeaturesSection";
 import HowItWorksSection from "../components/HowItWorksSection";
+import PlayerCardShowcase from "../components/PlayerCardShowcase";
 import Footer from "../components/Footer";
 
 const Landing = () => {
@@ -11,6 +12,7 @@ const Landing = () => {
       <HeroSection />
       <FeaturesSection />
       <HowItWorksSection />
+      <PlayerCardShowcase />
       <Footer />
     </div>
   );

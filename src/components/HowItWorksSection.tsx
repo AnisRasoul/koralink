@@ -1,6 +1,8 @@
 import { UserPlus, Search, CheckCircle, ArrowRight } from "lucide-react";
+import { useScrollAnimation } from "../hooks/use-scroll-animation";
 
 const HowItWorksSection = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const steps = [
     {
       icon: UserPlus,
@@ -23,14 +25,14 @@ const HowItWorksSection = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-24 relative overflow-hidden">
+    <section ref={ref} id="how-it-works" className="py-24 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className={`text-center max-w-2xl mx-auto mb-16 scroll-slide-up ${isVisible ? 'is-visible' : ''}`}>
           <h2 className="font-display text-3xl md:text-5xl text-foreground mb-4">
             How It Works
           </h2>
@@ -47,15 +49,15 @@ const HowItWorksSection = () => {
           </div>
 
           {steps.map((step, index) => (
-            <div key={index} className="relative group">
-              <div className="card-stadium p-8 text-center relative z-10 h-full">
+            <div key={index} className={`relative group pt-12 scroll-slide-up ${isVisible ? 'is-visible' : ''}`} style={{ transitionDelay: `${index * 0.15}s` }}>
+              <div className="card-stadium p-8 text-center relative z-10 h-full overflow-visible">
                 {/* Step Number */}
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary rounded-full">
-                  <span className="font-display text-sm text-primary-foreground">{step.number}</span>
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary rounded-full z-20">
+                  <span className="font-display text-sm font-semibold text-primary-foreground">{step.number}</span>
                 </div>
 
                 {/* Icon */}
-                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-primary/10 flex items-center justify-center transition-all group-hover:bg-primary/20 group-hover:scale-110 mt-4">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-primary/10 flex items-center justify-center transition-all group-hover:bg-primary/20 group-hover:scale-110 mt-12">
                   <step.icon className="w-10 h-10 text-primary" />
                 </div>
 

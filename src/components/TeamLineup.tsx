@@ -22,16 +22,16 @@ const TeamLineup = ({ players, teamName, formation = "4-3-3", showAnimation = tr
   const getPositionStyle = (index: number, total: number): React.CSSProperties => {
     const formations: Record<string, number[][]> = {
       "4-3-3": [
-        [50, 90], // GK
-        [15, 70], [35, 70], [65, 70], [85, 70], // Defenders
-        [25, 45], [50, 45], [75, 45], // Midfielders
-        [25, 20], [50, 15], [75, 20], // Attackers
+        [50, 86], // GK
+        [8, 62], [30, 62], [70, 62], [92, 62], // Defenders
+        [18, 38], [50, 38], [82, 38], // Midfielders
+        [18, 14], [50, 8], [82, 14], // Attackers
       ],
       "4-4-2": [
-        [50, 90],
-        [15, 70], [35, 70], [65, 70], [85, 70],
-        [15, 45], [38, 45], [62, 45], [85, 45],
-        [35, 20], [65, 20],
+        [50, 86],
+        [8, 62], [30, 62], [70, 62], [92, 62],
+        [8, 38], [30, 38], [70, 38], [92, 38],
+        [30, 14], [70, 14],
       ],
     };
 
@@ -55,7 +55,7 @@ const TeamLineup = ({ players, teamName, formation = "4-3-3", showAnimation = tr
       </div>
 
       {/* Pitch */}
-      <div className="relative w-full aspect-[3/4] md:aspect-[4/3] bg-gradient-to-b from-green-800 to-green-900 rounded-2xl overflow-hidden border-4 border-green-700">
+      <div className="relative w-full aspect-[3/4] md:aspect-[3/4] lg:aspect-[4/5] min-h-[400px] md:min-h-[460px] lg:min-h-[520px] bg-gradient-to-b from-green-800 to-green-900 rounded-2xl overflow-hidden border-4 border-green-700">
         {/* Pitch Markings */}
         <div className="absolute inset-4 border-2 border-white/30 rounded-lg">
           {/* Center Circle */}
@@ -84,7 +84,7 @@ const TeamLineup = ({ players, teamName, formation = "4-3-3", showAnimation = tr
         <div className="absolute inset-8 md:inset-12">
           {players.slice(0, 11).map((player, index) => (
             <div key={player.id} style={getPositionStyle(index, players.length)} className="z-10">
-              <div className="transform scale-[0.6] md:scale-75 lg:scale-90 origin-center">
+              <div className="transform scale-75 md:scale-90 lg:scale-100 origin-center">
                 <PlayerCard
                   player={player}
                   variant={player.level >= 8 ? "gold" : player.level >= 6 ? "silver" : "default"}

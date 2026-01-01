@@ -1,6 +1,8 @@
 import { MapPin, Calendar, Users, MessageSquare, BarChart3, Shield, Bell, Sparkles } from "lucide-react";
+import { useScrollAnimation } from "../hooks/use-scroll-animation";
 
 const FeaturesSection = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const playerFeatures = [
     {
       icon: MapPin,
@@ -48,12 +50,12 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="features" className="py-24 relative">
+    <section ref={ref} id="features" className="py-24 relative">
       <div className="absolute inset-0 bg-gradient-hero opacity-50" />
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className={`text-center max-w-2xl mx-auto mb-16 scroll-slide-up ${isVisible ? 'is-visible' : ''}`}>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6">
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm text-muted-foreground">Powerful Features</span>

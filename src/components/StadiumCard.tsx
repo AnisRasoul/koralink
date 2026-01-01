@@ -21,7 +21,7 @@ interface StadiumCardProps {
 
 const StadiumCard = ({ stadium, onBook, onViewDetails }: StadiumCardProps) => {
   return (
-    <div className="card-stadium group">
+    <div id={`stadium-${stadium.id}`} className="card-stadium group scroll-mt-24">
       {/* Image */}
       <div className="relative h-48 overflow-hidden">
         <div

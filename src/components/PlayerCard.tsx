@@ -35,7 +35,7 @@ const PlayerCard = ({ player, variant = "default", animationDelay = 0, showAnima
 
   return (
     <div
-      className={`${cardClass} w-40 h-56 flex flex-col items-center justify-between p-4 relative overflow-hidden ${
+      className={`${cardClass} w-28 h-40 flex flex-col items-center justify-between p-3 relative overflow-hidden rounded-xl ${
         showAnimation ? "animate-lineup-reveal opacity-0" : ""
       }`}
       style={{ animationDelay: `${animationDelay}ms`, animationFillMode: "forwards" }}
@@ -47,31 +47,31 @@ const PlayerCard = ({ player, variant = "default", animationDelay = 0, showAnima
       </div>
 
       {/* Level Badge */}
-      <div className="absolute top-2 left-2 flex flex-col items-center">
-        <span className="text-2xl font-display text-foreground">{player.level}</span>
-        <span className="text-[10px] uppercase text-muted-foreground tracking-wider">OVR</span>
+      <div className="absolute top-1.5 left-1.5 flex flex-col items-center">
+        <span className="text-xl font-display text-foreground">{player.level}</span>
+        <span className="text-[8px] uppercase text-muted-foreground tracking-wider">OVR</span>
       </div>
 
       {/* Position Badge */}
-      <div className={`absolute top-2 right-2 px-2 py-0.5 rounded text-xs font-bold bg-gradient-to-r ${positionGradient} text-white`}>
+      <div className={`absolute top-1.5 right-1.5 px-1.5 py-0.5 rounded text-[10px] font-bold bg-gradient-to-r ${positionGradient} text-white`}>
         {player.position}
       </div>
 
       {/* Avatar */}
-      <div className="w-20 h-20 rounded-full bg-secondary/50 border-2 border-primary/30 flex items-center justify-center overflow-hidden mt-6">
+      <div className="w-14 h-14 rounded-full bg-secondary/50 border-2 border-primary/30 flex items-center justify-center overflow-hidden mt-4">
         {player.avatar ? (
           <img src={player.avatar} alt={player.name} className="w-full h-full object-cover" />
         ) : (
-          <User className="w-10 h-10 text-muted-foreground" />
+          <User className="w-7 h-7 text-muted-foreground" />
         )}
       </div>
 
       {/* Player Info */}
       <div className="text-center relative z-10">
-        <h4 className="font-display text-sm text-foreground uppercase tracking-wide truncate max-w-full px-2">
+        <h4 className="font-display text-xs text-foreground uppercase tracking-wide truncate max-w-full px-1">
           {player.name}
         </h4>
-        <p className="text-xs text-muted-foreground">{player.age} years</p>
+        <p className="text-[10px] text-muted-foreground">{player.age} yrs</p>
       </div>
 
       {/* Bottom Stats Bar */}
